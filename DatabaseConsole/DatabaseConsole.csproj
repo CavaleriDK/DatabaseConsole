@@ -65,7 +65,7 @@
     <Compile Include="Factories\CamperFactory.cs" />
     <Compile Include="Controllers\CampsiteController.cs" />
     <Compile Include="Controllers\RoundPassController.cs" />
-    <Compile Include="RoundPassedModel.cs" />
+    <Compile Include="Models\RoundPassedModel.cs" />
     <Compile Include="States\IntermediateState.cs" />
     <Compile Include="Models\CampsiteModel.cs" />
     <Compile Include="States\PlayerTwoTurnState.cs" />

@@ -41,6 +41,14 @@ namespace DatabaseConsole
         {
             // Setup main menu as first state when starting game
             ChangeState(MainMenuState.Instance);
+
+            //Create tables
+            CampsiteModel.CreateTable();
+            RoundPassedModel.CreateDatabaseStructure();
+            Campermodel.CreateTable();
+            UnitTypeModel.CreateTable();
+
+            connection.Open();
         }
 
         public static void ChangeState(IState newState)
