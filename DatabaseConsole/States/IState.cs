@@ -8,5 +8,9 @@ namespace DatabaseConsole
 {
     interface IState
     {
+        string StateName { get; }
+        void Enter();
+        void ExecuteLoop();
+        void Exit();
     }
 }
