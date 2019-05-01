@@ -8,6 +8,7 @@ namespace DatabaseConsole
 {
     class CamperFactory
     {
+
         Random rnd = new Random();
 
         private static CamperFactory instance;
@@ -24,7 +25,7 @@ namespace DatabaseConsole
         }
 
 
-        public List<Campermodel> CreateCamper()
+        public List<Campermodel> CreateCamper(int round_number)
         {
             List<Campermodel> NewCampers = new List<Campermodel>();
             for (int i = 0; i < 30; i++)
@@ -35,12 +36,12 @@ namespace DatabaseConsole
                 if (randomPercent < 50)
                 {
                     randomPay = rnd.Next(10, 120);
-                    NewCampers.Add(new Campermodel("Tent", randomPay));
+                    NewCampers.Add(new Campermodel("Tent", randomPay, round_number));
                 }
                 else
                 {
                     randomPay = rnd.Next(50, 200);
-                    NewCampers.Add(new Campermodel("Caravan", randomPay));
+                    NewCampers.Add(new Campermodel("Caravan", randomPay, round_number));
                 }
 
             }
