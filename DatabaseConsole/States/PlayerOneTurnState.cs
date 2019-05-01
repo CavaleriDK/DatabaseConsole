@@ -10,6 +10,15 @@ namespace DatabaseConsole
     {
         public string StateName { get => "PlayerOneTurnState"; }
 
+        private static PlayerOneTurnState instance;
+        public static PlayerOneTurnState Instance
+        {
+            get
+            {
+                return (instance == null) ? instance = new PlayerOneTurnState() : instance;
+            }
+        }
+
         public void Enter()
         {
             Console.Clear();

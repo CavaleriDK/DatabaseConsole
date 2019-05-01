@@ -10,6 +10,15 @@ namespace DatabaseConsole
     {
         public string StateName => throw new NotImplementedException();
 
+        private static IntermediateState instance;
+        public static IntermediateState Instance
+        {
+            get
+            {
+                return (instance == null) ? instance = new IntermediateState() : instance;
+            }
+        }
+
         public void Enter()
         {
             throw new NotImplementedException();

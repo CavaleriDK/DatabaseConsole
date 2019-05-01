@@ -10,6 +10,15 @@ namespace DatabaseConsole
     {
         public string StateName => throw new NotImplementedException();
 
+        private static PlayerTwoTurnState instance;
+        public static PlayerTwoTurnState Instance
+        {
+            get
+            {
+                return (instance == null) ? instance = new PlayerTwoTurnState() : instance;
+            }
+        }
+
         public void Enter()
         {
             throw new NotImplementedException();

@@ -30,7 +30,7 @@ namespace DatabaseConsole
         List<RoundPassedUnitTypeModel> roundPassedUnitTypes;
         List<Campermodel> campers;
 
-        int roundNumber;
+        private int roundNumber;
 
         private RoundPassController()
         {
@@ -38,7 +38,7 @@ namespace DatabaseConsole
         }
 
 
-        public void EnterState()
+        public void CalculateRoundEvents()
         {
             //logik for det som skal ske før IntermediateState påbegyndes
 
