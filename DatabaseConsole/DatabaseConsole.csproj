@@ -61,10 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CampsiteController.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="Models\CampsiteModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\UnitTypeModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
