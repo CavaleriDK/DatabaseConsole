@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace DatabaseConsole
 {
-    class Program
+    class CampsiteModel
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
