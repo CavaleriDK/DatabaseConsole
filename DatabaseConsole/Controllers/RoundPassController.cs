@@ -31,6 +31,12 @@ namespace DatabaseConsole
         List<Campermodel> campers;
 
         private int roundNumber;
+        private int amountOfCampers;
+
+        public int RoundNumber { get => roundNumber; }
+        public int AmountOfCampers { get => amountOfCampers; }
+        public RoundPassedModel RoundPassedForPlayerOne { get => roundPassedForPlayerOne; }
+        public RoundPassedModel RoundPassedForPlayerTwo { get => roundPassedForPlayerTwo; }
 
         private RoundPassController()
         {
@@ -41,9 +47,9 @@ namespace DatabaseConsole
         public void CalculateRoundEvents()
         {
             //logik for det som skal ske før IntermediateState påbegyndes
-
-
             this.roundNumber += 1;
+            this.amountOfCampers = 30;
+
             roundPassedUnitTypes = new List<RoundPassedUnitTypeModel>();
             campers = new List<Campermodel>();
 
@@ -68,7 +74,7 @@ namespace DatabaseConsole
             }
 
             // Create 30 campers
-            campers = CamperFactory.Instance.CreateCamper(this.roundNumber);
+            campers = CamperFactory.Instance.CreateCamper(this.roundNumber, this.amountOfCampers);
 
             // Check if campers want to live anywhere
             foreach (Campermodel campist in campers)
@@ -209,5 +215,50 @@ namespace DatabaseConsole
             }
         }
 
+        public int GetNumberOfCampersWithAUnitType()
+        {
+            return campers.FindAll((camper) => 
+            {
+                return (camper.UnitTypeId > 0) ? true : false;
+            }).Count;
+        }
+
+        public int GetNumberOfCampersByPlayerID(int player_id)
+        {
+            int theRPID = (player_id == roundPassedForPlayerOne.CampingpladsId) ? roundPassedForPlayerOne.ID : roundPassedForPlayerTwo.ID;
+
+            return campers.FindAll((campist) => 
+            {
+                bool r = false;
+                foreach (RoundPassedUnitTypeModel rput in roundPassedUnitTypes)
+                {
+                    if (rput.CampistID == campist.ID && rput.RoundPassedID == theRPID)
+                    {
+                        r = true;
+                        break;
+                    }
+                }
+                return r;
+            }).Count;
+        }
+
+        public int GetNumberOfCampersByPlayerID(int player_id, string in_which_type)
+        {
+            int theRPID = (player_id == roundPassedForPlayerOne.CampingpladsId) ? roundPassedForPlayerOne.ID : roundPassedForPlayerTwo.ID;
+
+            return campers.FindAll((campist) =>
+            {
+                bool r = false;
+                foreach (RoundPassedUnitTypeModel rput in roundPassedUnitTypes)
+                {
+                    if (rput.CampistID == campist.ID && rput.RoundPassedID == theRPID && campist.Pref == in_which_type)
+                    {
+                        r = true;
+                        break;
+                    }
+                }
+                return r;
+            }).Count;
+        }
     }
 }

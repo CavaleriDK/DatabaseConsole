@@ -27,10 +27,12 @@ namespace DatabaseConsole
         public CampsiteModel PlayerOne { get => playerOne; }
         public CampsiteModel PlayerTwo { get => playerTwo; }
         public List<UnitTypeModel> Units { get => units; }
+
         public int MaxAmountOfUnitsP1 { get => maxAmountOfUnitsP1; }
         public int MaxAmountOfUnitsP2 { get => maxAmountOfUnitsP2; }
         public int TotalAmountOfUnitsP1 { get => totalAmountOfUnitsP1; }
         public int TotalAmountOfUnitsP2 { get => totalAmountOfUnitsP2; }
+
         public int WeightOfTent { get => weightOfTent; }
         public int WeightOfCaravan { get => weightOfCaravan; }
 

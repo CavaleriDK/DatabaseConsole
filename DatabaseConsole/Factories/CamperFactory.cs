@@ -25,10 +25,10 @@ namespace DatabaseConsole
         }
 
 
-        public List<Campermodel> CreateCamper(int round_number)
+        public List<Campermodel> CreateCamper(int round_number, int amountOfCampers)
         {
             List<Campermodel> NewCampers = new List<Campermodel>();
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < amountOfCampers; i++)
             {
 
                 int randomPay;
