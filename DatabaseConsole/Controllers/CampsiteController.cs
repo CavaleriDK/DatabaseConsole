@@ -15,12 +15,18 @@ namespace DatabaseConsole
         int campsiteCount;
         int caravanPrice;
         int tentPrice;
+        int maxAmountOfUnits = 15;
+        int weightOfTent = 1;
+        int weightOfCaravan = 2;
         CampsiteModel playerOne;
         CampsiteModel playerTwo;
 
         public CampsiteModel PlayerOne { get => playerOne; }
         public CampsiteModel PlayerTwo { get => playerTwo; }
         public List<UnitTypeModel> Units { get => units; }
+        public int MaxAmountOfUnits { get => maxAmountOfUnits; }
+        public int WeightOfTent { get => WeightOfTent; }
+        public int WeightOfCaravan { get => weightOfCaravan; }
 
         private static CampsiteController instance;
 
@@ -216,6 +222,21 @@ namespace DatabaseConsole
             {
                 //Program.ChangeState(IntermediateState.Instance);
             }
+        }
+
+        public int GetNumberOfUnitsForPlayer(int player_id)
+        {
+            return units.FindAll((unit) =>
+            {
+                return (unit.CampingGroundsID == player_id) ? true : false;
+            }).Count;
+        }
+        public int GetNumberOfUnitsForPlayer(int player_id, string type)
+        {
+            return units.FindAll((unit) =>
+            {
+                return (unit.CampingGroundsID == player_id && unit.Type == type) ? true : false;
+            }).Count;
         }
     }
 }

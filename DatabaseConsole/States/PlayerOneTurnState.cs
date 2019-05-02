@@ -29,8 +29,25 @@ namespace DatabaseConsole
         {
             Console.Clear();
 
+            int numberOfTents = CampsiteController.Instance.GetNumberOfUnitsForPlayer(CampsiteController.Instance.PlayerOne.ID, "Tent");
+            int numberOfCaravans = CampsiteController.Instance.GetNumberOfUnitsForPlayer(CampsiteController.Instance.PlayerOne.ID, "Caravan");
+            int weightCombined = (numberOfTents * CampsiteController.Instance.WeightOfTent) + (numberOfCaravans * CampsiteController.Instance.WeightOfCaravan);
+
             // Eksempel på, at få skrevet noget fra campsite controller ud.
             Console.WriteLine($"Welcome to {CampsiteController.Instance.PlayerOne.Title}'s Campsite!");
+            Console.WriteLine("Stats:");
+            Console.WriteLine($"Amount of tents: {numberOfTents}");
+            Console.WriteLine($"Amount of caravans: {numberOfCaravans}");
+            Console.WriteLine($"Total amount: {weightCombined} / {CampsiteController.Instance.MaxAmountOfUnits}");
+            Console.WriteLine($"Current price of tent rental: {CampsiteController.Instance.PlayerOne.PriceOfTent}");
+            Console.WriteLine($"Current price of caravan rental: {CampsiteController.Instance.PlayerOne.PriceOfCaravan}");
+            Console.WriteLine();
+
+            Console.WriteLine("Please select an option: ");
+            Console.WriteLine("1: Add tent");
+            Console.WriteLine("2: Add caravan");
+            Console.WriteLine("3: Remove tent");
+            Console.WriteLine("4: Remove caravan");
 
             Console.ReadLine();
             // Printe noget om stats for ens campingplads
