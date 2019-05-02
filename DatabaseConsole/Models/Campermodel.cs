@@ -25,6 +25,7 @@ namespace DatabaseConsole
 
         public Campermodel(string pref, int maxPay, int round_number)
         {
+            this.cmd = Program.Connection.CreateCommand();
             this.pref = pref;
             this.maxPay = maxPay;
             this.roundNumber = round_number;
@@ -42,7 +43,7 @@ namespace DatabaseConsole
 
         private void CreateModel()
         {
-            cmd.CommandText = "Insert into Campermodel (id, pref, maxPay, round_number) VALUES (null, " + this.pref + ", " + this.maxPay + ", " + this.roundNumber + ")";
+            cmd.CommandText = "Insert into Campermodel (id, pref, maxPay, round_number) VALUES (null, '" + this.pref + "', " + this.maxPay + ", " + this.roundNumber + ")";
             cmd.ExecuteNonQuery();
 
             string sqlrow = "Select last_insert_rowid()";
@@ -54,7 +55,7 @@ namespace DatabaseConsole
         {
             this.unitTypeId = id;
 
-            cmd.CommandText = "UPDATE Campermodel SET unittype_id = " + this.unitTypeId + "WHERE id =" + this.id;
+            cmd.CommandText = "UPDATE Campermodel SET unittype_id = " + this.unitTypeId + " WHERE id =" + this.id;
             cmd.ExecuteNonQuery();
         }
     }
