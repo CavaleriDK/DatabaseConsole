@@ -109,7 +109,7 @@ namespace DatabaseConsole
                     }
                     break;
                 case ConsoleKey.D7:
-                    if(tentPrice == 0 && caravanPrice == 0)
+                    if(tentPrice == 0 || caravanPrice == 0)
                     {
                         mistakesExists = true;
                     }
