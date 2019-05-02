@@ -47,8 +47,6 @@ namespace DatabaseConsole
         public void CalculateRoundEvents()
         {
             //logik for det som skal ske før IntermediateState påbegyndes
-
-
             this.roundNumber += 1;
             this.amountOfCampers = 30;
 
@@ -217,5 +215,50 @@ namespace DatabaseConsole
             }
         }
 
+        public int GetNumberOfCampersWithAUnitType()
+        {
+            return campers.FindAll((camper) => 
+            {
+                return (camper.UnitTypeId > 0) ? true : false;
+            }).Count;
+        }
+
+        public int GetNumberOfCampersByPlayerID(int player_id)
+        {
+            int theRPID = (player_id == roundPassedForPlayerOne.CampingpladsId) ? roundPassedForPlayerOne.ID : roundPassedForPlayerTwo.ID;
+
+            return campers.FindAll((campist) => 
+            {
+                bool r = false;
+                foreach (RoundPassedUnitTypeModel rput in roundPassedUnitTypes)
+                {
+                    if (rput.CampistID == campist.ID && rput.RoundPassedID == theRPID)
+                    {
+                        r = true;
+                        break;
+                    }
+                }
+                return r;
+            }).Count;
+        }
+
+        public int GetNumberOfCampersByPlayerID(int player_id, string in_which_type)
+        {
+            int theRPID = (player_id == roundPassedForPlayerOne.CampingpladsId) ? roundPassedForPlayerOne.ID : roundPassedForPlayerTwo.ID;
+
+            return campers.FindAll((campist) =>
+            {
+                bool r = false;
+                foreach (RoundPassedUnitTypeModel rput in roundPassedUnitTypes)
+                {
+                    if (rput.CampistID == campist.ID && rput.RoundPassedID == theRPID && campist.Pref == in_which_type)
+                    {
+                        r = true;
+                        break;
+                    }
+                }
+                return r;
+            }).Count;
+        }
     }
 }
