@@ -48,7 +48,7 @@ namespace DatabaseConsole
         {
             priceOfTent = newPrice;
             // update campsitemodel (tent_price) WHERE id = this.id
-            cmd.CommandText = "UPDATE campsitemodel SET priceoftent = " + this.priceOfTent + "WHERE id =" + this.id;
+            cmd.CommandText = "UPDATE campsitemodel SET priceoftent = " + this.priceOfTent + " WHERE id =" + this.id;
             cmd.ExecuteNonQuery();
         }
 
@@ -56,7 +56,7 @@ namespace DatabaseConsole
         {
             priceOfCaravan = newPrice;
             // update campsitemodel (tent_price) WHERE id = this.id
-            cmd.CommandText = "UPDATE campsitemodel SET priceofcaravan = " + this.priceOfCaravan + "WHERE id =" + this.id;
+            cmd.CommandText = "UPDATE campsitemodel SET priceofcaravan = " + this.priceOfCaravan + " WHERE id =" + this.id;
             cmd.ExecuteNonQuery();
         }
 
@@ -64,7 +64,7 @@ namespace DatabaseConsole
         {
             totalIncome += earnings;
             // INCREAMENT // UPDATE (total_income) VALUES(total_ WHERE id = this.id
-            cmd.CommandText = "UPDATE campsitemodel SET totalincome = " + this.totalIncome + "WHERE id =" + this.id;
+            cmd.CommandText = "UPDATE campsitemodel SET totalincome = " + this.totalIncome + " WHERE id =" + this.id;
             cmd.ExecuteNonQuery();
         }
         public int MyID()

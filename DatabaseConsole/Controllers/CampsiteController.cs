@@ -15,7 +15,10 @@ namespace DatabaseConsole
         int campsiteCount;
         int caravanPrice;
         int tentPrice;
-        int maxAmountOfUnits = 15;
+        int maxAmountOfUnitsP1 = 15;
+        int maxAmountOfUnitsP2 = 15;
+        int totalAmountOfUnitsP1 = 0;
+        int totalAmountOfUnitsP2 = 0;
         int weightOfTent = 1;
         int weightOfCaravan = 2;
         CampsiteModel playerOne;
@@ -24,8 +27,11 @@ namespace DatabaseConsole
         public CampsiteModel PlayerOne { get => playerOne; }
         public CampsiteModel PlayerTwo { get => playerTwo; }
         public List<UnitTypeModel> Units { get => units; }
-        public int MaxAmountOfUnits { get => maxAmountOfUnits; }
-        public int WeightOfTent { get => WeightOfTent; }
+        public int MaxAmountOfUnitsP1 { get => maxAmountOfUnitsP1; }
+        public int MaxAmountOfUnitsP2 { get => maxAmountOfUnitsP2; }
+        public int TotalAmountOfUnitsP1 { get => totalAmountOfUnitsP1; }
+        public int TotalAmountOfUnitsP2 { get => totalAmountOfUnitsP2; }
+        public int WeightOfTent { get => weightOfTent; }
         public int WeightOfCaravan { get => weightOfCaravan; }
 
         private static CampsiteController instance;
@@ -109,11 +115,19 @@ namespace DatabaseConsole
         {
             if (isPlayerOne == true)
             {
-                units.Add(new UnitTypeModel("Tent", playerOne.MyID()));
+                if (TotalAmountOfUnitsP1 < MaxAmountOfUnitsP1)
+                {
+                    units.Add(new UnitTypeModel("Tent", playerOne.MyID()));
+                    totalAmountOfUnitsP1 += WeightOfTent;
+                }
             }
-            else
+            else if(isPlayerOne == false)
             {
-                units.Add(new UnitTypeModel("Tent", playerTwo.MyID()));
+                if(TotalAmountOfUnitsP2 < MaxAmountOfUnitsP2)
+                {
+                    units.Add(new UnitTypeModel("Tent", playerTwo.MyID()));
+                    totalAmountOfUnitsP2 += WeightOfTent;
+                }
             }
         }
 
@@ -121,11 +135,19 @@ namespace DatabaseConsole
         {
             if (isPlayerOne == true)
             {
-                units.Add(new UnitTypeModel("Caravan", playerOne.MyID()));
+                if(TotalAmountOfUnitsP1 < MaxAmountOfUnitsP1 - 1)
+                {
+                    units.Add(new UnitTypeModel("Caravan", playerOne.MyID()));
+                    totalAmountOfUnitsP1 += WeightOfCaravan;
+                }
             }
-            else
+            else if(isPlayerOne == false)
             {
-                units.Add(new UnitTypeModel("Caravan", playerTwo.MyID()));
+                if (TotalAmountOfUnitsP2 < MaxAmountOfUnitsP2 -1)
+                {
+                    units.Add(new UnitTypeModel("Caravan", playerTwo.MyID()));
+                    totalAmountOfUnitsP2 += WeightOfCaravan;
+                }   
             }
         }
 

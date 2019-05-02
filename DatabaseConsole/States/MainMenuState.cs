@@ -18,7 +18,7 @@ namespace DatabaseConsole
                 return (instance == null) ? instance = new MainMenuState() : instance;
             }
         }
-
+        
 
         private bool lastInputContainedError;
         private bool showMainScreen;
