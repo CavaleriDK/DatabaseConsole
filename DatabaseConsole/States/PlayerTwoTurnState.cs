@@ -107,7 +107,14 @@ namespace DatabaseConsole
                     }
                     break;
                 case "7":
-                    Program.ChangeState(IntermediateState.Instance);
+                    if(tentPrice == 0 && caravanPrice == 0)
+                    {
+                        mistakesExists = true;
+                    }
+                    else
+                    {
+                        Program.ChangeState(IntermediateState.Instance);
+                    }
                     break;
                 default:
                     mistakesExists = true;
