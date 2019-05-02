@@ -31,6 +31,12 @@ namespace DatabaseConsole
         List<Campermodel> campers;
 
         private int roundNumber;
+        private int amountOfCampers;
+
+        public int RoundNumber { get => roundNumber; }
+        public int AmountOfCampers { get => amountOfCampers; }
+        public RoundPassedModel RoundPassedForPlayerOne { get => roundPassedForPlayerOne; }
+        public RoundPassedModel RoundPassedForPlayerTwo { get => roundPassedForPlayerTwo; }
 
         private RoundPassController()
         {
@@ -44,6 +50,8 @@ namespace DatabaseConsole
 
 
             this.roundNumber += 1;
+            this.amountOfCampers = 30;
+
             roundPassedUnitTypes = new List<RoundPassedUnitTypeModel>();
             campers = new List<Campermodel>();
 
@@ -68,7 +76,7 @@ namespace DatabaseConsole
             }
 
             // Create 30 campers
-            campers = CamperFactory.Instance.CreateCamper(this.roundNumber);
+            campers = CamperFactory.Instance.CreateCamper(this.roundNumber, this.amountOfCampers);
 
             // Check if campers want to live anywhere
             foreach (Campermodel campist in campers)

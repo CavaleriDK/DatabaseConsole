@@ -25,7 +25,7 @@ namespace DatabaseConsole
         public CampsiteModel PlayerTwo { get => playerTwo; }
         public List<UnitTypeModel> Units { get => units; }
         public int MaxAmountOfUnits { get => maxAmountOfUnits; }
-        public int WeightOfTent { get => WeightOfTent; }
+        public int WeightOfTent { get => weightOfTent; }
         public int WeightOfCaravan { get => weightOfCaravan; }
 
         private static CampsiteController instance;
