@@ -101,6 +101,10 @@ namespace DatabaseConsole
             {
                 lastInputContainedError = true;
             }
+            else if (IsAllDigits(input) == false)
+            {
+                lastInputContainedError = true;
+            }
             else
             {
                 // Set player 1 name
@@ -151,6 +155,17 @@ namespace DatabaseConsole
                     lastInputContainedError = true;
                     break;
             }
+        }
+        public static bool IsAllDigits(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!Char.IsLetter(c))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
