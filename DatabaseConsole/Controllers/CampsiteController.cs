@@ -162,34 +162,42 @@ namespace DatabaseConsole
             // Fjern modellen fra listen
             if (isPlayerOne == true)
             {
-                foreach (UnitTypeModel unit in units)
+                if(TotalAmountOfUnitsP1 >= 1)
                 {
-                    if (unit.Type == "Tent" && unit.CampingGroundsID == playerOne.MyID())
+                    foreach (UnitTypeModel unit in units)
                     {
-                        tentForRemoval = unit;
-                        break;
+                        if (unit.Type == "Tent" && unit.CampingGroundsID == playerOne.MyID())
+                        {
+                            tentForRemoval = unit;
+                            break;
+                        }
                     }
-                }
-                if (tentForRemoval != null)
-                {
-                    tentForRemoval.Remove();
-                    units.Remove(tentForRemoval);
+                    if (tentForRemoval != null)
+                    {
+                        tentForRemoval.Remove();
+                        units.Remove(tentForRemoval);
+                        totalAmountOfUnitsP1 -= WeightOfTent;
+                    }
                 }
             }
             else
             {
-                foreach (UnitTypeModel unit in units)
+                if(TotalAmountOfUnitsP2 >= 1)
                 {
-                    if (unit.Type == "Tent" && unit.CampingGroundsID == playerTwo.MyID())
+                    foreach (UnitTypeModel unit in units)
                     {
-                        tentForRemoval = unit;
-                        break;
+                        if (unit.Type == "Tent" && unit.CampingGroundsID == playerTwo.MyID())
+                        {
+                            tentForRemoval = unit;
+                            break;
+                        }
                     }
-                }
-                if (tentForRemoval != null)
-                {
-                    tentForRemoval.Remove();
-                    units.Remove(tentForRemoval);
+                    if (tentForRemoval != null)
+                    {
+                        tentForRemoval.Remove();
+                        units.Remove(tentForRemoval);
+                        totalAmountOfUnitsP2 -= WeightOfTent;
+                    }
                 }
             }
         }
@@ -200,34 +208,42 @@ namespace DatabaseConsole
 
             if (isPlayerOne == true)
             {
-                foreach (UnitTypeModel unit in units)
+                if(TotalAmountOfUnitsP1 >= 2)
                 {
-                    if (unit.Type == "Caravan" && unit.CampingGroundsID == playerOne.MyID())
+                    foreach (UnitTypeModel unit in units)
                     {
-                        caravanForRemoval = unit;
-                        break;
+                        if (unit.Type == "Caravan" && unit.CampingGroundsID == playerOne.MyID())
+                        {
+                            caravanForRemoval = unit;
+                            break;
+                        }
                     }
-                }
-                if (caravanForRemoval != null)
-                {
-                    caravanForRemoval.Remove();
-                    units.Remove(caravanForRemoval);
+                    if (caravanForRemoval != null)
+                    {
+                        caravanForRemoval.Remove();
+                        units.Remove(caravanForRemoval);
+                        totalAmountOfUnitsP1 -= WeightOfCaravan;
+                    }
                 }
             }
             else
             {
-                foreach (UnitTypeModel unit in units)
+                if(TotalAmountOfUnitsP2 >= 2)
                 {
-                    if (unit.Type == "Caravan" && unit.CampingGroundsID == playerTwo.MyID())
+                    foreach (UnitTypeModel unit in units)
                     {
-                        caravanForRemoval = unit;
-                        break;
+                        if (unit.Type == "Caravan" && unit.CampingGroundsID == playerTwo.MyID())
+                        {
+                            caravanForRemoval = unit;
+                            break;
+                        }
                     }
-                }
-                if (caravanForRemoval != null)
-                {
-                    caravanForRemoval.Remove();
-                    units.Remove(caravanForRemoval);
+                    if (caravanForRemoval != null)
+                    {
+                        caravanForRemoval.Remove();
+                        units.Remove(caravanForRemoval);
+                        totalAmountOfUnitsP2 -= weightOfCaravan;
+                    }
                 }
             }
         }

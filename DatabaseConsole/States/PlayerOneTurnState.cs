@@ -21,8 +21,8 @@ namespace DatabaseConsole
 
         string priceOfTent;
         string priceOfCaravan;
-        int tentPrice;
-        int caravanPrice;
+        int tentPrice = 0;
+        int caravanPrice = 0;
         bool mistakesExists;
 
         public void Enter()
@@ -107,7 +107,15 @@ namespace DatabaseConsole
                     }
                     break;
                 case "7":
-                    Program.ChangeState(PlayerTwoTurnState.Instance);
+                    if(tentPrice == 0 && caravanPrice == 0)
+                    {
+                        mistakesExists = true;
+                    }
+                    else
+                    {
+                        Program.ChangeState(PlayerTwoTurnState.Instance);
+
+                    }
                     break;
                 default:
                     mistakesExists = true;
