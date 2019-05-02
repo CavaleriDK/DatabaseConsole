@@ -33,7 +33,7 @@ namespace DatabaseConsole
 
             string sqlrowid = "SELECT last_insert_rowid()";
             cmd.CommandText = sqlrowid;
-            this.id = (Int32)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
 
         public static void CreateTable()

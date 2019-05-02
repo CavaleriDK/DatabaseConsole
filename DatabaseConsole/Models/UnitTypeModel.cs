@@ -64,7 +64,7 @@ namespace DatabaseConsole
 
             string sqlrow = "SELECT last_insert_rowid()";
             cmd.CommandText = sqlrow;
-            this.id = (Int32)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         /// <summary>
         /// Creates a row in the table and returns the ID of the row, also gives the name caravan
@@ -76,7 +76,7 @@ namespace DatabaseConsole
 
             string sqlrow = "SELECT last_insert_rowid()";
             cmd.CommandText = sqlrow;
-            this.id = (Int32)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         /// <summary>
         /// Removes a row in the database depending on the ID

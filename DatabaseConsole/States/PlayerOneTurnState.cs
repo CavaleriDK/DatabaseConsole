@@ -30,8 +30,9 @@ namespace DatabaseConsole
             Console.Clear();
 
             // Eksempel på, at få skrevet noget fra campsite controller ud.
-            Console.WriteLine(@"Welcome to {CampsiteController.Instance.PlayerOne.Title}'s Campsite!");
+            Console.WriteLine($"Welcome to {CampsiteController.Instance.PlayerOne.Title}'s Campsite!");
 
+            Console.ReadLine();
             // Printe noget om stats for ens campingplads
 
             // Printe hvilke muligheder man har for indtastninger (1 = ... , 2 = ... osv)

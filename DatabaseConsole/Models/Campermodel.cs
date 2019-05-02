@@ -47,7 +47,7 @@ namespace DatabaseConsole
 
             string sqlrow = "Select last_insert_rowid()";
             cmd.CommandText = sqlrow;
-            this.id = (Int32)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
 
         public void ChangeUnitTypeID(int id)

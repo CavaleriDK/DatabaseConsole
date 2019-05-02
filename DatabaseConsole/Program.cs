@@ -9,6 +9,8 @@ namespace DatabaseConsole
 {
     class Program
     {
+        const string CONNECTIONSTRING = @"Data Source=camping.db;version=3;New=true;Compress=true";
+
         private static SQLiteConnection connection;
 
         public static SQLiteConnection Connection
@@ -17,7 +19,7 @@ namespace DatabaseConsole
             {
                 if(connection == null)
                 {
-                    connection = new SQLiteConnection();
+                    connection = new SQLiteConnection(CONNECTIONSTRING);
                 }
                 return connection;
             }
@@ -42,13 +44,14 @@ namespace DatabaseConsole
             // Setup main menu as first state when starting game
             ChangeState(MainMenuState.Instance);
 
+            Connection.Open();
+
             //Create tables
             CampsiteModel.CreateTable();
             RoundPassedModel.CreateDatabaseStructure();
             Campermodel.CreateTable();
             UnitTypeModel.CreateTable();
 
-            connection.Open();
         }
 
         public static void ChangeState(IState newState)

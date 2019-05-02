@@ -54,7 +54,7 @@ namespace DatabaseConsole
             cmd.ExecuteNonQuery();
 
             cmd.CommandText = lastInsertRowId;
-            this.id = (int)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
 
         public void UpdateIncome(int earnings)
@@ -120,7 +120,7 @@ namespace DatabaseConsole
             cmd.ExecuteNonQuery();
 
             cmd.CommandText = lastInsertRowId;
-            this.id = (int)cmd.ExecuteScalar();
+            this.id = Convert.ToInt32(cmd.ExecuteScalar());
         }
 
         public void AddCampist(int campist_id)
