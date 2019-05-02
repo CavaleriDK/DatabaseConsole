@@ -62,27 +62,25 @@ namespace DatabaseConsole
             if (mistakesExists)
             {
                 Console.WriteLine("Enter a correct option");
-                Console.WriteLine();
             }
             mistakesExists = false;
 
-            string input = Console.ReadLine();
-
-            switch (input)
+            switch (Console.ReadKey().Key)
             {
-                case "1":
+                case ConsoleKey.D1:
                     CampsiteController.Instance.AddTent(true);
                     break;
-                case "2":
+                case ConsoleKey.D2:
                     CampsiteController.Instance.AddCaravan(true);
                     break;
-                case "3":
+                case ConsoleKey.D3:
                     CampsiteController.Instance.RemoveTent(true);
                     break;
-                case "4":
+                case ConsoleKey.D4:
                     CampsiteController.Instance.RemoveCaravan(true);
                     break;
-                case "5":
+                case ConsoleKey.D5:
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                     Console.WriteLine("Please Enter the price you want, between 1 & 1000");
                     priceOfTent = Console.ReadLine();
                     if(Int32.TryParse(priceOfTent, out tentPrice) && tentPrice >=1 && tentPrice <= 1000)
@@ -94,7 +92,8 @@ namespace DatabaseConsole
                         mistakesExists = true;
                     }
                     break;
-                case "6":
+                case ConsoleKey.D6:
+                    Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
                     Console.WriteLine("Please Enter the price you want, between 1 & 1000");
                     priceOfCaravan = Console.ReadLine();
                     if (Int32.TryParse(priceOfCaravan, out caravanPrice) && caravanPrice >=1 && caravanPrice <= 1000)
@@ -106,8 +105,8 @@ namespace DatabaseConsole
                         mistakesExists = true;
                     }
                     break;
-                case "7":
-                    if(tentPrice == 0 && caravanPrice == 0)
+                case ConsoleKey.D7:
+                    if (tentPrice == 0 && caravanPrice == 0)
                     {
                         mistakesExists = true;
                     }

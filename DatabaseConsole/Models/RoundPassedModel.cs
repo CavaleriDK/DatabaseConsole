@@ -25,11 +25,11 @@ namespace DatabaseConsole
         public int CampingpladsId { get => campingpladsId; }
         public int RoundNumber { get => roundNumber; }
 
-        public RoundPassedModel(int campingplads_id, int round_number, int previous_income)
+        public RoundPassedModel(int campingplads_id, int round_number)
         {
             this.campingpladsId = campingplads_id;
             this.roundNumber = round_number;
-            this.campingpladsIncome = previous_income;
+            this.campingpladsIncome = 0;
 
             CreateRoundAsRow();
         }
@@ -68,23 +68,6 @@ namespace DatabaseConsole
             cmd.ExecuteNonQuery();
         }
 
-        //public static List<RoundPassedModel> GetRoundsByNumber(int roundNumber)
-        //{
-        //    List<RoundPassedModel> returnList = new List<RoundPassedModel>();
-
-        //    string query = "SELECT * FROM " + tableName + " WHERE round_number=" + roundNumber;
-
-        //    SQLiteCommand cmd = GameWorld.Connection.CreateCommand();
-        //    cmd.CommandText = query;
-        //    SQLiteDataReader reader = cmd.ExecuteReader();
-
-        //    while (reader.Read())
-        //    {
-        //        returnList.Add(new RoundPassedModel(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3)));
-        //    }
-
-        //    return returnList;
-        //}
     }
 
     class RoundPassedUnitTypeModel
@@ -125,6 +108,7 @@ namespace DatabaseConsole
 
         public void AddCampist(int campist_id)
         {
+            this.campistId = campist_id;
             SQLiteCommand cmd = Program.Connection.CreateCommand();
 
             string sql = "UPDATE " + extraTableName + " SET campist_id = " + campist_id + " WHERE id=" + this.id;

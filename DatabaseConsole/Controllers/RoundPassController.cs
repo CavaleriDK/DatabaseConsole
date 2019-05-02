@@ -57,8 +57,8 @@ namespace DatabaseConsole
             playerTwo = CampsiteController.Instance.PlayerTwo;
 
             // Create rounds
-            roundPassedForPlayerOne = new RoundPassedModel(playerOne.ID, this.roundNumber, playerOne.TotalIncome);
-            roundPassedForPlayerTwo = new RoundPassedModel(playerTwo.ID, this.roundNumber, playerTwo.TotalIncome);
+            roundPassedForPlayerOne = new RoundPassedModel(playerOne.ID, this.roundNumber);
+            roundPassedForPlayerTwo = new RoundPassedModel(playerTwo.ID, this.roundNumber);
 
             // Create rounds and unittypes binding
             foreach (UnitTypeModel unit in CampsiteController.Instance.Units)
@@ -164,7 +164,7 @@ namespace DatabaseConsole
             if (chosenPlayer != null)
             {
                 // Hvis campisten har råd!
-                if (chosenPlayer.PriceOfTent <= campist.MaxPay)
+                if (campist.Pref == "Tent" && chosenPlayer.PriceOfTent <= campist.MaxPay || campist.Pref == "Caravan" && chosenPlayer.PriceOfCaravan <= campist.MaxPay)
                 {
                     if (chosenPlayer.ID == playerOne.ID)
                     {
@@ -200,18 +200,18 @@ namespace DatabaseConsole
             if (campist.Pref == "Tent")
             {
                 // Update income for campsitemodel
-                playerOne.ChangeTotalIncome(playerOne.PriceOfTent);
+                player.ChangeTotalIncome(player.PriceOfTent);
 
                 // Update income for roundpassed model
-                rp.UpdateIncome(playerOne.PriceOfTent);
+                rp.UpdateIncome(player.PriceOfTent);
             }
             else if (campist.Pref == "Caravan")
             {
                 // Update income for campsitemodel
-                playerOne.ChangeTotalIncome(playerOne.PriceOfTent);
+                player.ChangeTotalIncome(player.PriceOfCaravan);
 
                 // Update income for roundpassed model
-                rp.UpdateIncome(playerOne.PriceOfTent);
+                rp.UpdateIncome(player.PriceOfCaravan);
             }
         }
 
